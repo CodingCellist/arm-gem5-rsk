@@ -1,21 +1,21 @@
 diff -Naur parsec-3.0_nopatch/config/gcc.bldconf parsec-3.0/config/gcc.bldconf
---- parsec-3.0_nopatch/config/gcc.bldconf	2017-06-21 10:58:55.072013000 +0100
-+++ parsec-3.0/config/gcc.bldconf	2017-06-21 11:21:25.884013002 +0100
+--- parsec-3.0_nopatch/config/gcc.bldconf	2013-07-28 16:38:51.000000000 +0200
++++ parsec-3.0/config/gcc.bldconf	2021-03-05 11:16:41.647522766 +0100
 @@ -40,20 +40,22 @@
    # Linux + default case
  
    # CC_HOME is installation root of the C compiler
 -  export CC_HOME="/usr"
-+  export CC_HOME="<gcc-linaro directory>"
++  export CC_HOME="${XCOMP_DIR}"
    # BINUTIL_HOME is installation root of the GNU binutils
 -  export BINUTIL_HOME="/usr"
-+  export BINUTIL_HOME="<gcc-linaro directory>/aarch64-linux-gnu"
++  export BINUTIL_HOME="${XCOMP_DIR}/aarch64-none-linux-gnu"
    # GNUTOOL_HOME is installation root of the GNU tools
    export GNUTOOL_HOME="/usr"
    # BINARY_PREFIX is the string which is used as prefix for the GNU binaries
    export BINARY_PREFIX=""
 +  # GCC_PREFIX is the string which is used as prefix for the compilers and preprocessors
-+  export GCC_PREFIX="aarch64-linux-gnu-"
++  export GCC_PREFIX="aarch64-none-linux-gnu-"
  ;;
  esac
  
@@ -30,149 +30,149 @@ diff -Naur parsec-3.0_nopatch/config/gcc.bldconf parsec-3.0/config/gcc.bldconf
  
  # GNU Binutils
 diff -Naur parsec-3.0_nopatch/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:45.000000000 +0100
-+++ parsec-3.0/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf	2017-06-21 11:22:09.756013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:45.000000000 +0200
++++ parsec-3.0/pkgs/apps/blackscholes/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.647522766 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:44.000000000 +0100
-+++ parsec-3.0/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf	2017-06-21 11:22:58.292013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:44.000000000 +0200
++++ parsec-3.0/pkgs/apps/bodytrack/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.647522766 +0100
 @@ -27,5 +27,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--enable-threads --disable-openmp --disable-tbb"
 -
-+build_conf="--enable-threads --disable-openmp --disable-tbb --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--enable-threads --disable-openmp --disable-tbb --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:48.000000000 +0100
-+++ parsec-3.0/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf	2017-06-21 11:24:03.280013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:48.000000000 +0200
++++ parsec-3.0/pkgs/apps/facesim/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.647522766 +0100
 @@ -27,5 +27,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:48.000000000 +0100
-+++ parsec-3.0/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf	2017-06-21 11:24:29.696013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:48.000000000 +0200
++++ parsec-3.0/pkgs/apps/ferret/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -30,4 +30,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:44.000000000 +0100
-+++ parsec-3.0/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf	2017-06-21 11:24:45.808013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:44.000000000 +0200
++++ parsec-3.0/pkgs/apps/fluidanimate/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:43.000000000 +0100
-+++ parsec-3.0/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf	2017-06-21 11:26:17.888013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:43.000000000 +0200
++++ parsec-3.0/pkgs/apps/raytrace/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -30,4 +30,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 \ No newline at end of file
 diff -Naur parsec-3.0_nopatch/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:48.000000000 +0100
-+++ parsec-3.0/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf	2017-06-21 11:26:35.500013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:48.000000000 +0200
++++ parsec-3.0/pkgs/apps/swaptions/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/vips/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/vips/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/vips/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:45.000000000 +0100
-+++ parsec-3.0/pkgs/apps/vips/parsec/gcc-pthreads.bldconf	2017-06-21 11:27:43.276013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/vips/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:45.000000000 +0200
++++ parsec-3.0/pkgs/apps/vips/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -28,4 +28,4 @@
  
  # Arguments to pass to the configure script, if it exists
  vips_basic_conf="--disable-shared --disable-cxx --without-fftw3 --without-magick --without-liboil --without-lcms --without-OpenEXR --without-matio --without-pangoft2 --without-tiff --without-jpeg --without-zip --without-png --without-libexif --without-python --without-x --without-perl --without-v4l --without-cimg"
 -build_conf="${vips_basic_conf} --enable-threads"
-+build_conf="${vips_basic_conf} --enable-threads --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="${vips_basic_conf} --enable-threads --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/apps/x264/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/apps/x264/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/apps/x264/parsec/gcc-pthreads.bldconf	2013-07-28 15:39:44.000000000 +0100
-+++ parsec-3.0/pkgs/apps/x264/parsec/gcc-pthreads.bldconf	2017-06-21 11:29:31.392013002 +0100
+--- parsec-3.0_nopatch/pkgs/apps/x264/parsec/gcc-pthreads.bldconf	2013-07-28 16:39:44.000000000 +0200
++++ parsec-3.0/pkgs/apps/x264/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -35,5 +35,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--enable-pthread --extra-asflags=\"${ASFLAGS}\" --extra-cflags=\"${CFLAGS}\" --extra-ldflags=\"${LDFLAGS} ${LIBS}\""
-+build_conf="--enable-pthread --extra-asflags=\"${ASFLAGS}\" --extra-cflags=\"${CFLAGS}\" --extra-ldflags=\"${LDFLAGS} ${LIBS}\" --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--enable-pthread --extra-asflags=\"${ASFLAGS}\" --extra-cflags=\"${CFLAGS}\" --extra-ldflags=\"${LDFLAGS} ${LIBS}\" --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf	2013-07-28 15:38:52.000000000 +0100
-+++ parsec-3.0/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf	2017-06-21 11:30:07.480013002 +0100
+--- parsec-3.0_nopatch/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf	2013-07-28 16:38:52.000000000 +0200
++++ parsec-3.0/pkgs/kernels/canneal/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf	2013-07-28 15:38:51.000000000 +0100
-+++ parsec-3.0/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf	2017-06-21 11:30:32.576013002 +0100
+--- parsec-3.0_nopatch/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf	2013-07-28 16:38:51.000000000 +0200
++++ parsec-3.0/pkgs/kernels/dedup/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf parsec-3.0/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf
---- parsec-3.0_nopatch/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf	2013-07-28 15:38:52.000000000 +0100
-+++ parsec-3.0/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf	2017-06-21 11:30:49.404013002 +0100
+--- parsec-3.0_nopatch/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf	2013-07-28 16:38:52.000000000 +0200
++++ parsec-3.0/pkgs/kernels/streamcluster/parsec/gcc-pthreads.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/libs/glib/parsec/gcc.bldconf parsec-3.0/pkgs/libs/glib/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/glib/parsec/gcc.bldconf	2013-07-28 15:38:52.000000000 +0100
-+++ parsec-3.0/pkgs/libs/glib/parsec/gcc.bldconf	2017-06-21 11:32:22.536013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/glib/parsec/gcc.bldconf	2013-07-28 16:38:52.000000000 +0200
++++ parsec-3.0/pkgs/libs/glib/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--disable-shared --enable-threads --with-threads=posix"
-+build_conf="--disable-shared --enable-threads --with-threads=posix --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--disable-shared --enable-threads --with-threads=posix --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/gsl/parsec/gcc.bldconf parsec-3.0/pkgs/libs/gsl/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/gsl/parsec/gcc.bldconf	2013-07-28 15:39:13.000000000 +0100
-+++ parsec-3.0/pkgs/libs/gsl/parsec/gcc.bldconf	2017-06-21 11:33:08.996013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/gsl/parsec/gcc.bldconf	2013-07-28 16:39:13.000000000 +0200
++++ parsec-3.0/pkgs/libs/gsl/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--disable-shared"
-+build_conf="--disable-shared --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--disable-shared --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/libs/hooks/parsec/gcc.bldconf parsec-3.0/pkgs/libs/hooks/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/hooks/parsec/gcc.bldconf	2013-07-28 15:39:05.000000000 +0100
-+++ parsec-3.0/pkgs/libs/hooks/parsec/gcc.bldconf	2017-06-21 11:33:58.776013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/hooks/parsec/gcc.bldconf	2013-07-28 16:39:05.000000000 +0200
++++ parsec-3.0/pkgs/libs/hooks/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/hooks/src/hooks.c parsec-3.0/pkgs/libs/hooks/src/hooks.c
---- parsec-3.0_nopatch/pkgs/libs/hooks/src/hooks.c	2017-06-21 11:15:11.216013000 +0100
-+++ parsec-3.0/pkgs/libs/hooks/src/hooks.c	2017-06-21 11:19:23.320013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/hooks/src/hooks.c	2013-07-28 16:39:06.000000000 +0200
++++ parsec-3.0/pkgs/libs/hooks/src/hooks.c	2021-03-05 11:16:41.650856124 +0100
 @@ -42,6 +42,7 @@
  #include "include/hooks.h"
  #include "config.h"
@@ -234,110 +234,109 @@ diff -Naur parsec-3.0_nopatch/pkgs/libs/hooks/src/hooks.c parsec-3.0/pkgs/libs/h
    printf(HOOKS_PREFIX" Leaving ROI\n");
    fflush(NULL);
  }
- 
 diff -Naur parsec-3.0_nopatch/pkgs/libs/libjpeg/parsec/gcc.bldconf parsec-3.0/pkgs/libs/libjpeg/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/libjpeg/parsec/gcc.bldconf	2013-07-28 15:38:56.000000000 +0100
-+++ parsec-3.0/pkgs/libs/libjpeg/parsec/gcc.bldconf	2017-06-21 11:34:32.256013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/libjpeg/parsec/gcc.bldconf	2013-07-28 16:38:56.000000000 +0200
++++ parsec-3.0/pkgs/libs/libjpeg/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--disable-shared"
-+build_conf="--disable-shared --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--disable-shared --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/libs/libxml2/parsec/gcc.bldconf parsec-3.0/pkgs/libs/libxml2/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/libxml2/parsec/gcc.bldconf	2013-07-28 15:39:06.000000000 +0100
-+++ parsec-3.0/pkgs/libs/libxml2/parsec/gcc.bldconf	2017-06-21 11:34:52.756013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/libxml2/parsec/gcc.bldconf	2013-07-28 16:39:06.000000000 +0200
++++ parsec-3.0/pkgs/libs/libxml2/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,4 +26,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--disable-shared --with-threads"
-+build_conf="--disable-shared --with-threads --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--disable-shared --with-threads --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/libs/mesa/parsec/gcc.bldconf parsec-3.0/pkgs/libs/mesa/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/mesa/parsec/gcc.bldconf	2013-07-28 15:39:00.000000000 +0100
-+++ parsec-3.0/pkgs/libs/mesa/parsec/gcc.bldconf	2017-06-21 11:35:11.748013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/mesa/parsec/gcc.bldconf	2013-07-28 16:39:00.000000000 +0200
++++ parsec-3.0/pkgs/libs/mesa/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="--with-driver=xlib --enable-glut --enable-static --disable-shared"
-+build_conf="--with-driver=xlib --enable-glut --enable-static --disable-shared --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--with-driver=xlib --enable-glut --enable-static --disable-shared --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/parmacs/parsec/gcc.bldconf parsec-3.0/pkgs/libs/parmacs/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/parmacs/parsec/gcc.bldconf	2013-07-28 15:39:05.000000000 +0100
-+++ parsec-3.0/pkgs/libs/parmacs/parsec/gcc.bldconf	2017-06-21 11:35:58.012013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/parmacs/parsec/gcc.bldconf	2013-07-28 16:39:05.000000000 +0200
++++ parsec-3.0/pkgs/libs/parmacs/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/ssl/parsec/gcc.bldconf parsec-3.0/pkgs/libs/ssl/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/ssl/parsec/gcc.bldconf	2013-07-28 15:39:19.000000000 +0100
-+++ parsec-3.0/pkgs/libs/ssl/parsec/gcc.bldconf	2017-06-21 11:37:18.728013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/ssl/parsec/gcc.bldconf	2013-07-28 16:39:19.000000000 +0200
++++ parsec-3.0/pkgs/libs/ssl/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf="threads no-zlib no-shared"
-+build_conf="threads no-zlib no-shared --build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="threads no-zlib no-shared --build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/tbblib/parsec/gcc.bldconf parsec-3.0/pkgs/libs/tbblib/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/tbblib/parsec/gcc.bldconf	2013-07-28 15:38:57.000000000 +0100
-+++ parsec-3.0/pkgs/libs/tbblib/parsec/gcc.bldconf	2017-06-21 11:37:43.208013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/tbblib/parsec/gcc.bldconf	2013-07-28 16:38:57.000000000 +0200
++++ parsec-3.0/pkgs/libs/tbblib/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/uptcpip/parsec/gcc.bldconf parsec-3.0/pkgs/libs/uptcpip/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/uptcpip/parsec/gcc.bldconf	2013-07-28 15:39:18.000000000 +0100
-+++ parsec-3.0/pkgs/libs/uptcpip/parsec/gcc.bldconf	2017-06-21 11:38:06.432013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/uptcpip/parsec/gcc.bldconf	2013-07-28 16:39:18.000000000 +0200
++++ parsec-3.0/pkgs/libs/uptcpip/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/libs/zlib/parsec/gcc.bldconf parsec-3.0/pkgs/libs/zlib/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/libs/zlib/parsec/gcc.bldconf	2013-07-28 15:39:17.000000000 +0100
-+++ parsec-3.0/pkgs/libs/zlib/parsec/gcc.bldconf	2017-06-21 11:38:22.784013002 +0100
+--- parsec-3.0_nopatch/pkgs/libs/zlib/parsec/gcc.bldconf	2013-07-28 16:39:17.000000000 +0200
++++ parsec-3.0/pkgs/libs/zlib/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,5 +26,5 @@
  build_inplace="TRUE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/tools/cmake/parsec/gcc.bldconf parsec-3.0/pkgs/tools/cmake/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/tools/cmake/parsec/gcc.bldconf	2013-07-28 15:39:31.000000000 +0100
-+++ parsec-3.0/pkgs/tools/cmake/parsec/gcc.bldconf	2017-06-21 11:39:21.308013002 +0100
+--- parsec-3.0_nopatch/pkgs/tools/cmake/parsec/gcc.bldconf	2013-07-28 16:39:31.000000000 +0200
++++ parsec-3.0/pkgs/tools/cmake/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -26,4 +26,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
 diff -Naur parsec-3.0_nopatch/pkgs/tools/libtool/parsec/gcc.bldconf parsec-3.0/pkgs/tools/libtool/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/tools/libtool/parsec/gcc.bldconf	2013-07-28 15:39:41.000000000 +0100
-+++ parsec-3.0/pkgs/tools/libtool/parsec/gcc.bldconf	2017-06-21 11:39:41.676013002 +0100
+--- parsec-3.0_nopatch/pkgs/tools/libtool/parsec/gcc.bldconf	2013-07-28 16:39:41.000000000 +0200
++++ parsec-3.0/pkgs/tools/libtool/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,5 +27,5 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
  
 diff -Naur parsec-3.0_nopatch/pkgs/tools/yasm/parsec/gcc.bldconf parsec-3.0/pkgs/tools/yasm/parsec/gcc.bldconf
---- parsec-3.0_nopatch/pkgs/tools/yasm/parsec/gcc.bldconf	2013-07-28 15:39:38.000000000 +0100
-+++ parsec-3.0/pkgs/tools/yasm/parsec/gcc.bldconf	2017-06-21 11:39:55.272013002 +0100
+--- parsec-3.0_nopatch/pkgs/tools/yasm/parsec/gcc.bldconf	2013-07-28 16:39:38.000000000 +0200
++++ parsec-3.0/pkgs/tools/yasm/parsec/gcc.bldconf	2021-03-05 11:16:41.650856124 +0100
 @@ -27,4 +27,4 @@
  build_inplace="FALSE"
  
  # Arguments to pass to the configure script, if it exists
 -build_conf=""
-+build_conf="--build=x86_64-linux-gnu --host=aarch64-linux-gnu"
++build_conf="--build=x86_64-linux-gnu --host=aarch64-unknown-linux-gnu"
